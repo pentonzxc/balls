@@ -1,6 +1,6 @@
 package com.innowise.algo;
 
-abstract public class ParallelAbstractSort<T> extends AbstractSort<T> {
+public abstract class ParallelAbstractSort<T> extends AbstractSort<T> {
     protected T[] src;
 
     public ParallelAbstractSort(BoolComparator<T> comp) {

@@ -2,7 +2,7 @@ package com.innowise.algo;
 
 import java.util.concurrent.RecursiveAction;
 
-abstract public class AbstractSort<T> extends RecursiveAction implements Sort<T> {
+public abstract class AbstractSort<T> extends RecursiveAction implements Sort<T> {
 
     protected BoolComparator<T> comp;
 
