@@ -2,7 +2,7 @@ package com.innowise.algo.quick;
 
 import com.innowise.algo.BoolComparator;
 
-public interface QuickSort<T> {
+interface QuickSort<T> {
 
     BoolComparator<T> comparator();
 

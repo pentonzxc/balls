@@ -2,7 +2,9 @@ package com.innowise.algo.merge;
 
 import com.innowise.algo.BoolComparator;
 
-public interface MergeSort<T> {
+import static com.innowise.util.ArrayUtil.array;
+
+interface MergeSort<T> {
     BoolComparator<T> comparator();
 
 
