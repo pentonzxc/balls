@@ -6,9 +6,12 @@ public abstract class Ball {
 
     private int length;
 
-    public Ball(int weight, int length) {
+    private Color color;
+
+    public Ball(Color color, int weight, int length) {
         this.weight = weight;
         this.length = length;
+        this.color = color;
     }
 
 
@@ -20,9 +23,9 @@ public abstract class Ball {
         return "Ball{" +
                 "weight=" + weight +
                 ", length=" + length +
+                ", color=" + color +
                 '}';
     }
-
 
     public int getWeight() {
         return weight;
@@ -31,5 +34,10 @@ public abstract class Ball {
 
     public int getLength() {
         return length;
+    }
+
+
+    public Color getColor() {
+        return color;
     }
 }
