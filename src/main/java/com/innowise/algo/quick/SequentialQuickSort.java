@@ -15,16 +15,15 @@ public class SequentialQuickSort<T> extends SequentialAbstractSort<T> implements
         quicksort(src , 0 , src.length - 1);
     }
 
-    protected void quicksort(T[] src, int l, int r) {
-        if (l >= r) {
+    protected void quicksort(T[] src, int left, int right) {
+        if (left >= right) {
             return;
         }
 
-        int pivot = partition(src, l, r);
+        int pivot = partition(src, left, right);
 
-        quicksort(src, l, pivot);
-
-        quicksort(src, pivot + 1, r);
+        quicksort(src, left, pivot);
+        quicksort(src, pivot + 1, right);
     }
 
     @Override
