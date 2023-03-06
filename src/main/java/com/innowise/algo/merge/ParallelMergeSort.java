@@ -4,8 +4,6 @@ package com.innowise.algo.merge;
 import com.innowise.algo.BoolComparator;
 import com.innowise.algo.ParallelAbstractSort;
 
-import static com.innowise.util.ArrayUtil.array;
-
 public class ParallelMergeSort<T> extends ParallelAbstractSort<T> implements MergeSort<T> {
 
     public ParallelMergeSort(BoolComparator<T> comp) {
@@ -20,22 +18,16 @@ public class ParallelMergeSort<T> extends ParallelAbstractSort<T> implements Mer
     protected void compute() {
         if (src.length < 2) return;
 
-        int m = src.length / 2;
+        ArrayPair<T> pair = MergeSort.splitArray(src);
 
-        T[] left = array(token, m);
-        System.arraycopy(src, 0, left, 0, m);
-
-        T[] right = array(token, src.length - m);
-        System.arraycopy(src, m, right, 0, src.length - m);
-
-        ParallelMergeSort<T> t1 = new ParallelMergeSort<>(left, comp);
-        ParallelMergeSort<T> t2 = new ParallelMergeSort<>(right, comp);
+        ParallelMergeSort<T> t1 = new ParallelMergeSort<>(pair.left, comp);
+        ParallelMergeSort<T> t2 = new ParallelMergeSort<>(pair.right, comp);
 
         t1.fork();
         t2.compute();
         t1.join();
 
-        merge(src, left, right);
+        merge(src, pair.left, pair.right);
     }
 
 

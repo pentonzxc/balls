@@ -22,4 +22,32 @@ interface MergeSort<T> {
             trg[i++] = right[r++];
         }
     }
+
+
+    @SuppressWarnings("unchecked")
+    static <T> ArrayPair<T> splitArray(T[] src) {
+        var token = (Class<T>) src.getClass().getComponentType();
+        int m = src.length / 2;
+
+        T[] left = array(token, m);
+        System.arraycopy(src, 0, left, 0, m);
+
+        T[] right = array(token, src.length - m);
+        System.arraycopy(src, m, right, 0, src.length - m);
+
+        return new ArrayPair<>(left, right);
+    }
+
+
+    class ArrayPair<T> {
+
+        T[] left;
+
+        T[] right;
+
+        public ArrayPair(T[] left, T[] right) {
+            this.left = left;
+            this.right = right;
+        }
+    }
 }
