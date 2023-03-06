@@ -1,6 +1,5 @@
 package com.innowise.algo.merge;
 
-
 import com.innowise.algo.BoolComparator;
 import com.innowise.algo.ParallelAbstractSort;
 

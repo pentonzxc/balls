@@ -1,6 +1,5 @@
 package com.innowise.util;
 
-
 import java.lang.reflect.Array;
 
 public class ArrayUtil {
