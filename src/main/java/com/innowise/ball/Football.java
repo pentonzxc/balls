@@ -2,10 +2,9 @@ package com.innowise.ball;
 
 public class Football extends Ball {
 
-    public Football(int weight, int length) {
-        super(weight, length);
+    public Football(Color color, int weight, int length) {
+        super(color, weight, length);
     }
-
 
     @Override
     public String type() {
