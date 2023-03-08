@@ -2,11 +2,11 @@ package com.innowise.ball;
 
 public abstract class Ball {
 
-    private int weight;
+    protected int weight;
 
-    private int length;
+    protected int length;
 
-    private Color color;
+    protected Color color;
 
     public Ball(Color color, int weight, int length) {
         this.weight = weight;
