@@ -7,9 +7,9 @@ interface QuickSort<T> {
     BoolComparator<T> comparator();
 
 
-    default int partition(T[] src, int l, int r) {
-        T pivot = src[(l + r) / 2];
-        int i = l, j = r;
+    default int partition(T[] src, int left, int right) {
+        T pivot = src[(left + right) / 2];
+        int i = left, j = right;
         while (true) {
             while (comparator().compare(pivot, src[i])) {
                 i += 1;

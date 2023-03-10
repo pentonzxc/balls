@@ -8,15 +8,16 @@ public abstract class AbstractSort<T> extends RecursiveAction implements Sort<T>
 
     protected Class<T> token;
 
-
     public AbstractSort(BoolComparator<T> comp) {
         this.comp = comp;
     }
+
 
     public void sort(T[] arr) {
         setToken(arr.getClass());
         doSort(arr);
     }
+
 
     protected abstract void doSort(T[] src);
 
@@ -26,7 +27,13 @@ public abstract class AbstractSort<T> extends RecursiveAction implements Sort<T>
         this.token = (Class<T>) tokenClazz.getComponentType();
     }
 
+
     public void setComparator(BoolComparator<T> comparator) {
         this.comp = comparator;
+    }
+
+
+    public BoolComparator<T> getComparator() {
+        return comp;
     }
 }
