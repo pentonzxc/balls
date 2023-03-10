@@ -6,8 +6,9 @@ import com.innowise.algo.Sort;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 
-public class Cart {
+public class Cart implements Iterable<Ball> {
 
     private Collection<Ball> balls;
 
@@ -43,7 +44,7 @@ public class Cart {
     }
 
 
-    public void addAll(Collection<Ball> balls) {
+    public void addAll(Collection<? extends Ball> balls) {
         this.balls.addAll(balls);
     }
 
@@ -53,19 +54,31 @@ public class Cart {
     }
 
 
+    public void setSort(Sort<Ball> sort) {
+        this.strategy = sort;
+    }
+
+
+    public Sort<Ball> getStrategy() {
+        return strategy;
+    }
+
+
+    public Collection<Ball> getBalls() {
+        return balls;
+    }
+
+
+    @Override
+    public Iterator<Ball> iterator() {
+        return balls.iterator();
+    }
+
+
     @Override
     public String toString() {
         return "Cart{" +
                 "balls=" + balls +
                 '}';
-    }
-
-
-    public void setSort(Sort<Ball> sort) {
-        this.strategy = sort;
-    }
-
-    public Collection<Ball> getBalls() {
-        return balls;
     }
 }
