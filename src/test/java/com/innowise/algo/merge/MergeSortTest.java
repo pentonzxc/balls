@@ -1,6 +1,7 @@
 package com.innowise.algo.merge;
 
 import com.innowise.algo.BoolComparator;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -9,12 +10,19 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class MergeSortTest {
 
-    private MergeSort<Integer> sort = new MergeSortWrapper<>();
+    private static MergeSort<Integer> sort;
+
+    @BeforeAll
+    static void beforeAll() {
+        sort = new MergeSortFake();
+    }
+
 
     @Test
     void whenComparator_thenReturnBoolComparator() {
         assertThat(sort.comparator()).isInstanceOf(BoolComparator.class);
     }
+
 
     @ParameterizedTest(name = "{index} - {0} - source, {1} - left, {2} - right, {3} - expected")
     @MethodSource("provider.ArrayProvider#orderedLeftAndRightArrayMerge")
@@ -28,7 +36,7 @@ class MergeSortTest {
     }
 
 
-    @ParameterizedTest(name = "{index} - {0} - source, {1} - left, {2} - right, {3} - not expected")
+    @ParameterizedTest(name = "{0} - source, {1} - left, {2} - right, {3} - not expected")
     @MethodSource("provider.ArrayProvider#unorderedLeftAndRightArrayMerge")
     void whenMergeOrderedLeftAndRight_checkArrayChangeAsNotExpected(Integer[] trg,
                                                                     Integer[] left,
@@ -40,13 +48,11 @@ class MergeSortTest {
     }
 
 
-    private class MergeSortWrapper<T> implements MergeSort<T> {
+    private static class MergeSortFake implements MergeSort<Integer> {
 
         @Override
-        public BoolComparator<T> comparator() {
-            return (t1, t2) -> true;
+        public BoolComparator<Integer> comparator() {
+            return (t1, t2) -> t1 > t2;
         }
     }
-
-
 }
